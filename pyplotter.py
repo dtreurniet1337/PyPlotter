@@ -1,7 +1,11 @@
 # Created by Daan Treurniet
-
+from gui.master_gui import MasterGUI
 from datastore import DataStore
 
-data_store = DataStore()
+#gui = MasterGUI()
 
-data_store.load_file('data/test_data_short.mat', track_time=True)
+data_store = DataStore()
+data_store.load_file('data/test_data_short.mat')
+data_store.generate_tree()
+
+#gui.mainloop()

@@ -1,8 +1,7 @@
 import time
 
-
 class TimeTracker:
-    def __init__(self, print_process):
+    def __init__(self, print_process=True):
         self.print_process = print_process
         self.start_time = time.time()
         self.end_time = time.time()
