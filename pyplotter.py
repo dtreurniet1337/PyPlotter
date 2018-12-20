@@ -1,11 +1,23 @@
 # Created by Daan Treurniet
-from gui.master_gui import MasterGUI
-from datastore import DataStore
+import sys
+from PySide2 import QtWidgets
 
-#gui = MasterGUI()
+import plotter_widgets
+import plotter_datastore
 
-data_store = DataStore()
-data_store.load_file('data/test_data_short.mat')
-data_store.generate_tree()
+class PyPlotter():
+    def __init__(self):
+        self.data_store = plotter_datastore.DataStore(self)
+        self.data_store.load_file('data/test_data_short.mat')
 
-#gui.mainloop()
+        self.app = QtWidgets.QApplication([])
+        self.main_gui = plotter_widgets.PyplotterGui(self)
+
+        self.main_gui.show()
+
+        sys.exit(self.app.exec_())
+
+    def get_datastore(self): return self.data_store
+
+if __name__ == '__main__':
+    pyplotter = PyPlotter()
